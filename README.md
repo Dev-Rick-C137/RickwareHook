@@ -519,3 +519,19 @@ RickwareHook is fully responsive across all screen sizes:
 - **Rate limiting** — the send loop handles Discord's 429 rate limit responses automatically by reading the `retry_after` value and waiting the specified duration before retrying (up to 3 attempts per webhook).
 - **Font** — the entire interface uses Arial / Helvetica for system-native rendering.
 - **Color scheme** — deep purple and black glass aesthetic throughout, with `backdrop-filter: blur()` panels, purple glow hover effects, and a Discord-accurate preview theme.
+
+---
+
+## Support
+
+Found a bug or security vulnerability?
+
+- Join the Discord community: [discord.com/invite/Wk7d8mJgyN](https://discord.com/invite/Wk7d8mJgyN)
+- Open a support ticket in the server
+- Or DM the developer directly: **@.rick.c137**
+
+> Please report security vulnerabilities **privately** via DM before opening any public issue.
+
+---
+
+*Developed by .rick.c137*
