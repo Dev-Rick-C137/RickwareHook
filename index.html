@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RickwareHook</title>
+    <link rel="icon" href="./images/logo.webp" type="image/webp">
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="dec-app">
+
+    <div class="dec-sidebar">
+        <div class="dec-sidebar-header">
+            <img src="https://dev-rick-c137.github.io/Launcher/images/main/r_l_logo_1.webp" alt="Logo" class="dec-sidebar-logo">
+        </div>
+        <div class="dec-sidebar-section">
+            <div class="dec-sidebar-label">Messages</div>
+            <div id="messageList" class="dec-message-list"></div>
+            <button class="dec-add-msg-btn" id="addMessageBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Add Message
+            </button>
+        </div>
+        <div class="dec-sidebar-section">
+            <div class="dec-sidebar-label">Data</div>
+            <button class="dec-sidebar-action-btn" id="importJsonBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Import JSON
+            </button>
+            <button class="dec-sidebar-action-btn" id="exportJsonBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export JSON
+            </button>
+            <button class="dec-sidebar-action-btn" id="saveBackupBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save Backup
+            </button>
+            <button class="dec-sidebar-action-btn" id="clearAllBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                Clear All
+            </button>
+        </div>
+        <div class="dec-sidebar-section dec-sidebar-links">
+            <a href="https://discord.gg/Wk7d8mJgyN" target="_blank" rel="noopener noreferrer" class="dec-sidebar-link-btn dec-sidebar-discord-btn">
+                <svg width="16" height="16" viewBox="0 0 127.14 96.36" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 97.68 97.68 0 0 0-29.11 0A72.37 72.37 0 0 0 45.64 0a105.89 105.89 0 0 0-26.25 8.09C2.79 32.65-1.71 56.6.54 80.21a105.73 105.73 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a68.68 68.68 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c2.64-27.38-4.51-51.11-18.9-72.15zM42.45 65.69C36.18 65.69 31 60 31 53s5-12.74 11.43-12.74S54 46 53.89 53s-5.05 12.69-11.44 12.69zm42.24 0C78.41 65.69 73.25 60 73.25 53s5-12.74 11.44-12.74S96.23 46 96.12 53s-5.04 12.69-11.43 12.69z"/></svg>
+                Join Discord
+            </a>
+            <a href="https://dev-rick-c137.github.io/Launcher/" target="_blank" rel="noopener noreferrer" class="dec-sidebar-link-btn dec-sidebar-web-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Launcher
+            </a>
+        </div>
+    </div>
+
+    <div class="dec-main">
+        <div class="dec-topbar">
+            <div class="dec-topbar-inner">
+                <div class="dec-webhook-bar">
+                    <div class="dec-webhook-left">
+                        <div class="dec-webhook-input-wrap">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <input type="text" id="webhookUrlInput" placeholder="https://discord.com/api/webhooks/..." autocomplete="off" spellcheck="false">
+                            <button class="dec-wh-add-btn" id="addWebhookBtn" title="Add Webhook">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                                Add
+                            </button>
+                        </div>
+                        <div class="dec-webhook-chips" id="webhookChips"></div>
+                    </div>
+                    <div class="dec-topbar-actions">
+                        <button class="dec-btn dec-btn-ghost" id="loadMsgBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                            Load
+                        </button>
+                        <button class="dec-btn dec-btn-ghost" id="jsonEditorBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            JSON
+                        </button>
+                        <button class="dec-btn dec-btn-ghost" id="manageWebhooksBtn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+                            Webhooks
+                        </button>
+                        <div class="dec-send-split">
+                            <button class="dec-btn dec-btn-primary" id="sendWebhookBtn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                Send
+                            </button>
+                            <button class="dec-btn dec-btn-primary dec-send-all-btn" id="sendAllWebhooksBtn" title="Send to all webhooks">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                                All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dec-content-area">
+            <div class="dec-editor-panel" id="editorPanel">
+                <div class="dec-editor-tabs">
+                    <button class="dec-etab active" data-tab="content">Content</button>
+                    <button class="dec-etab" data-tab="embeds">Embeds</button>
+                    <button class="dec-etab" data-tab="files">Files</button>
+                    <button class="dec-etab" data-tab="components">Components</button>
+                </div>
+
+                <div class="dec-tab-panel active" id="tab-content">
+                    <div class="dec-field-group">
+                        <label class="dec-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Username Override
+                        </label>
+                        <input type="text" class="dec-input" id="webhookUsername" placeholder="Bot Username (optional)">
+                    </div>
+                    <div class="dec-field-group">
+                        <label class="dec-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                            Avatar URL Override
+                        </label>
+                        <input type="text" class="dec-input" id="webhookAvatar" placeholder="https://... (optional)">
+                    </div>
+                    <div class="dec-field-group">
+                        <label class="dec-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            Message Content
+                            <span class="dec-char-count" id="contentCharCount">0/2000</span>
+                        </label>
+                        <div class="dec-format-toolbar" id="contentFormatToolbar" data-target="messageContent"></div>
+                        <textarea class="dec-textarea" id="messageContent" placeholder="Type your message here... Supports **bold**, *italic*, `code`, [links](url), @mentions" rows="5" maxlength="2000"></textarea>
+                        <div class="dec-markdown-hints">
+                            <span>**bold**</span><span>*italic*</span><span>`code`</span><span>```block```</span><span>@everyone</span><span>@here</span>
+                        </div>
+                    </div>
+                    <div class="dec-field-group">
+                        <label class="dec-label">Thread Name (Forum Channels)</label>
+                        <input type="text" class="dec-input" id="threadName" placeholder="Thread name (optional)">
+                    </div>
+                </div>
+
+                <div class="dec-tab-panel" id="tab-embeds">
+                    <div id="embedsList"></div>
+                    <button class="dec-add-embed-btn" id="addEmbedBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Embed
+                    </button>
+                </div>
+
+                <div class="dec-tab-panel" id="tab-files">
+                    <div class="dec-field-group">
+                        <label class="dec-label">File Attachments</label>
+                        <div class="dec-dropzone" id="fileDropzone">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <div>Drag &amp; drop files or <label class="dec-file-browse" for="fileInput">browse</label></div>
+                            <div class="dec-dropzone-hint">Max 8MB per file</div>
+                            <input type="file" id="fileInput" multiple hidden>
+                        </div>
+                        <div id="fileList" class="dec-file-list"></div>
+                    </div>
+                </div>
+
+                <div class="dec-tab-panel" id="tab-components">
+                    <div class="dec-components-info">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <p>Add link buttons via Discord Action Rows. Max 5 buttons per message.</p>
+                    </div>
+                    <div id="buttonsList"></div>
+                    <button class="dec-add-embed-btn" id="addButtonBtn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        Add Link Button
+                    </button>
+                </div>
+            </div>
+
+            <div class="dec-preview-panel" id="previewPanel">
+                <div class="dec-preview-header">
+                    <div class="dec-preview-title">
+                        <svg class="dec-preview-eye" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Live Preview
+                    </div>
+                    <button class="dec-preview-toggle" id="previewToggle">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Hide
+                    </button>
+                </div>
+                <div class="dec-preview-discord" id="discordPreview">
+                    <div class="dec-discord-channel-header">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+                        <span>general</span>
+                    </div>
+                    <div id="previewMessages" class="dec-preview-messages"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dec-preview-show-btn-wrap" id="previewShowBtnWrap" style="display:none">
+    <button class="dec-preview-show-btn" id="previewShowBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Show Preview
+    </button>
+</div>
+
+<div class="dec-modal-overlay hidden" id="jsonModal">
+    <div class="dec-modal">
+        <div class="dec-modal-header">
+            <div class="dec-modal-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                Raw JSON Editor
+            </div>
+            <button class="dec-modal-close" id="closeJsonModal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="dec-modal-body">
+            <div id="jsonHighlightEditor" class="dec-json-highlight-editor"></div>
+            <textarea class="dec-json-editor" id="jsonEditorArea" spellcheck="false" placeholder="{}"></textarea>
+        </div>
+        <div class="dec-modal-footer">
+            <button class="dec-btn dec-btn-ghost" id="importJsonFileBtn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Import
+            </button>
+            <button class="dec-btn dec-btn-ghost" id="formatJsonBtn">Format</button>
+            <button class="dec-btn dec-btn-ghost" id="validateJsonBtn">Validate</button>
+            <button class="dec-btn dec-btn-primary" id="applyJsonBtn">Apply</button>
+        </div>
+    </div>
+</div>
+
+<div class="dec-modal-overlay hidden" id="loadMsgModal">
+    <div class="dec-modal dec-modal-sm">
+        <div class="dec-modal-header">
+            <div class="dec-modal-title">Load Message</div>
+            <button class="dec-modal-close" id="closeLoadMsgModal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="dec-modal-body">
+            <div class="dec-field-group">
+                <label class="dec-label">Paste JSON payload</label>
+                <textarea class="dec-textarea" id="loadMsgJson" rows="8" placeholder='{"content": "Hello!", "embeds": [{"title": "My Embed"}]}'></textarea>
+            </div>
+        </div>
+        <div class="dec-modal-footer">
+            <button class="dec-btn dec-btn-ghost" id="cancelLoadMsg">Cancel</button>
+            <button class="dec-btn dec-btn-primary" id="confirmLoadMsg">Load</button>
+        </div>
+    </div>
+</div>
+
+<!-- Webhook Manager Modal -->
+<div class="dec-modal-overlay hidden" id="webhookManagerModal">
+    <div class="dec-modal dec-modal-wm">
+        <div class="dec-modal-header">
+            <div class="dec-modal-title">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+                Webhook Manager
+            </div>
+            <button class="dec-modal-close" id="closeWebhookManager">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="dec-modal-body dec-wm-body">
+            <div class="dec-wm-add-row">
+                <input type="text" class="dec-input" id="wmUrlInput" placeholder="https://discord.com/api/webhooks/...">
+                <input type="text" class="dec-input" id="wmNameInput" placeholder="Label (optional)" style="max-width:160px">
+                <button class="dec-btn dec-btn-primary" id="wmAddBtn">Add</button>
+            </div>
+
+            <div class="dec-wm-options">
+                <label class="dec-inline-toggle">
+                    <span class="dec-toggle-switch"><input type="checkbox" id="wmDelayEnabled"><span class="dec-toggle-slider"></span></span>
+                    Delay between sends
+                </label>
+                <div class="dec-wm-delay-row" id="wmDelayRow">
+                    <input type="number" class="dec-input" id="wmDelayMs" value="500" min="0" max="10000" style="width:90px">
+                    <span style="color:var(--text-secondary);font-size:13px">ms between each</span>
+                </div>
+            </div>
+
+            <div class="dec-wm-bomb-row">
+                <div class="dec-wm-switch-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                    Webhook Bomb Mode
+                </div>
+                <label class="dec-purple-switch">
+                    <input type="checkbox" id="wmBombMode">
+                    <span class="dec-purple-slider"></span>
+                </label>
+            </div>
+
+            <div id="wmBombOptions" style="display:none">
+                <div class="dec-wm-bomb-targets">
+                    <label class="dec-wm-radio-label">
+                        <input type="checkbox" id="wmBombAll" class="dec-wm-radio-check">
+                        <span>All webhooks</span>
+                    </label>
+                    <label class="dec-wm-radio-label">
+                        <input type="checkbox" id="wmBombSelected" class="dec-wm-radio-check">
+                        <span>Selected webhooks only</span>
+                    </label>
+                </div>
+                <div class="dec-wm-bomb-select-actions">
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmBombSelectAll">Select All</button>
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmBombDeselectAll">Deselect All</button>
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmBombSelectByChannel">By Channel ID</button>
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmBombSelectByServer">By Server ID</button>
+                </div>
+                <div id="wmBombFilterRow" style="display:none;gap:8px;flex-wrap:wrap;margin-top:6px" class="dec-row-flex">
+                    <input type="text" class="dec-input" id="wmBombFilterInput" placeholder="Enter ID..." style="flex:1;min-width:120px">
+                    <button class="dec-btn dec-btn-primary dec-btn-xs" id="wmBombFilterApply">Apply</button>
+                </div>
+            </div>
+
+            <div class="dec-wm-proxy-row">
+                <div class="dec-wm-switch-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                    Proxy Mode
+                </div>
+                <label class="dec-purple-switch">
+                    <input type="checkbox" id="wmProxyMode">
+                    <span class="dec-purple-slider"></span>
+                </label>
+            </div>
+
+            <div id="wmProxyOptions" style="display:none">
+                <div class="dec-proxy-textarea-wrap">
+                    <div class="dec-proxy-lines" id="wmProxyLineNums">1</div>
+                    <textarea class="dec-proxy-textarea" id="wmProxyList" placeholder="host:port:user:pass&#10;host:port:user:pass&#10;..." spellcheck="false"></textarea>
+                </div>
+                <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">One proxy per line — format: <code style="color:var(--purple-light)">host:port:user:pass</code></div>
+            </div>
+
+            <div class="dec-wm-count-row">
+                <label class="dec-label">Messages per webhook</label>
+                <input type="number" class="dec-input" id="wmMsgCount" value="1" min="1" max="999999999" style="width:140px">
+            </div>
+
+            <div id="wmWebhookList" class="dec-wm-list"></div>
+
+            <div id="wmProgressSection" style="display:none" class="dec-wm-progress-section">
+                <div class="dec-wm-progress-header">
+                    <span id="wmProgressLabel">Sending...</span>
+                    <span id="wmProgressPct">0%</span>
+                </div>
+                <div class="dec-wm-progress-bar-wrap">
+                    <div class="dec-wm-progress-bar" id="wmProgressBar" style="width:0%"></div>
+                </div>
+                <div class="dec-wm-progress-stats">
+                    <span id="wmSentCount">Sent: 0</span>
+                    <span id="wmTotalCount">Total: 0</span>
+                    <span id="wmProxyData">Data: 0 B</span>
+                </div>
+                <div class="dec-wm-progress-btns">
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmPauseBtn">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> Pause
+                    </button>
+                    <button class="dec-btn dec-btn-ghost dec-btn-xs" id="wmResumeBtn" style="display:none">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Resume
+                    </button>
+                    <button class="dec-btn dec-btn-xs dec-btn-danger" id="wmAbortBtn">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Abort
+                    </button>
+                </div>
+            </div>
+
+            <div class="dec-wm-send-section">
+                <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                    <button class="dec-btn dec-btn-primary" id="wmSendSelectedBtn">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Send to Selected
+                    </button>
+                    <button class="dec-btn dec-btn-primary" id="wmSendAllBtn">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                        Send to All
+                    </button>
+                    <button class="dec-btn dec-btn-ghost" id="wmSelectAllBtn">Select All</button>
+                    <button class="dec-btn dec-btn-ghost" id="wmDeselectAllBtn">Deselect All</button>
+                </div>
+                <div id="wmSendLog" class="dec-wm-log"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="dec-modal-overlay hidden" id="emojiModal">
+    <div class="dec-modal dec-modal-sm dec-emoji-modal">
+        <div class="dec-modal-header">
+            <div class="dec-modal-title">Insert Emoji</div>
+            <button class="dec-modal-close" id="closeEmojiModal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="dec-modal-body">
+            <input type="text" class="dec-input" id="emojiSearch" placeholder="Search emoji...">
+            <div class="dec-emoji-cats" id="emojiCats"></div>
+            <div class="dec-emoji-grid" id="emojiGrid"></div>
+        </div>
+    </div>
+</div>
+
+<div class="dec-modal-overlay hidden" id="mentionModal">
+    <div class="dec-modal dec-modal-sm">
+        <div class="dec-modal-header">
+            <div class="dec-modal-title" id="mentionModalTitle">Insert Mention</div>
+            <button class="dec-modal-close" id="closeMentionModal">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="dec-modal-body">
+            <div class="dec-field-group">
+                <label class="dec-label" id="mentionInputLabel">ID</label>
+                <input type="text" class="dec-input" id="mentionIdInput" placeholder="Enter ID...">
+            </div>
+        </div>
+        <div class="dec-modal-footer">
+            <button class="dec-btn dec-btn-ghost" id="cancelMentionModal">Cancel</button>
+            <button class="dec-btn dec-btn-primary" id="confirmMentionModal">Insert</button>
+        </div>
+    </div>
+</div>
+
+<div class="dec-toast-container" id="toastContainer"></div>
+<script src="./js/main.js"></script>
+</body>
+</html>
